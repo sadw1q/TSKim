@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#08080b">
+    <meta name="description" content="김태신의 소개 페이지">
+    <title>김태신</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family: Inter, Pretendard, "Noto Sans KR", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        min-height: 100%;
+        margin: 0;
+      }
+
+      body {
+        overflow: hidden;
+        background: #08080b;
+        color: #f7f7fb;
+        user-select: none;
+        -webkit-user-select: none;
+        -webkit-touch-callout: none;
+      }
+
+      body::before {
+        position: fixed;
+        inset: -35%;
+        z-index: -2;
+        content: "";
+        background:
+          radial-gradient(circle at 22% 30%, rgba(117, 87, 255, 0.16), transparent 24%),
+          radial-gradient(circle at 75% 72%, rgba(255, 69, 147, 0.11), transparent 26%);
+        animation: breathe 7s ease-in-out infinite alternate;
+      }
+
+      body::after {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        content: "";
+        opacity: 0.22;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.08'/%3E%3C/svg%3E");
+      }
+
+      main {
+        display: grid;
+        min-height: 100svh;
+        place-items: center;
+        padding: 2rem;
+      }
+
+      .intro {
+        margin: 0;
+        text-align: center;
+        transform: translateY(0.75rem);
+      }
+
+      .line {
+        display: block;
+        margin: 0;
+        font-size: clamp(2.3rem, 8vw, 7.5rem);
+        font-weight: 760;
+        line-height: 1.05;
+        letter-spacing: -0.065em;
+        opacity: 0;
+        filter: blur(12px);
+        transform: translateY(70px);
+        animation: rise 1.15s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+
+      .line:first-child {
+        animation-delay: 0.15s;
+      }
+
+      .line:last-child {
+        margin-top: 0.12em;
+        animation-delay: 0.72s;
+      }
+
+      .phrase {
+        display: inline-block;
+        max-width: 0;
+        overflow: hidden;
+        vertical-align: bottom;
+        white-space: nowrap;
+        opacity: 0;
+        clip-path: inset(0 100% 0 0);
+        filter: blur(8px) drop-shadow(0 0 12px rgba(175, 91, 255, 0.2));
+        transform: translateX(0.2em);
+        color: transparent;
+        background: linear-gradient(105deg, #ff3b3b 0%, #ff9f1c 15%, #ffe600 30%, #36d96b 45%, #23b5ff 60%, #645cff 75%, #d64cff 90%, #ff3b82 100%);
+        background-size: 260% 100%;
+        background-position: 100% 50%;
+        background-clip: text;
+        -webkit-background-clip: text;
+        animation: reveal-phrase 1.15s cubic-bezier(0.16, 1, 0.3, 1) 1.55s forwards;
+      }
+
+      .rainbow {
+        display: inline-block;
+        padding-right: 0.08em;
+        margin-right: -0.08em;
+        color: transparent;
+        background: linear-gradient(105deg, #ff3b3b 0%, #ff9f1c 15%, #ffe600 30%, #36d96b 45%, #23b5ff 60%, #645cff 75%, #d64cff 90%, #ff3b82 100%);
+        background-size: 260% 100%;
+        background-position: 100% 50%;
+        background-clip: text;
+        -webkit-background-clip: text;
+        filter: drop-shadow(0 0 22px rgba(175, 91, 255, 0.28));
+        animation: rainbow-flow 3.2s ease-in-out 1.85s infinite alternate;
+      }
+
+      @keyframes rise {
+        from {
+          opacity: 0;
+          filter: blur(12px);
+          transform: translateY(70px);
+        }
+        to {
+          opacity: 1;
+          filter: blur(0);
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes reveal-phrase {
+        to {
+          max-width: 20em;
+          opacity: 1;
+          clip-path: inset(0);
+          filter: blur(0) drop-shadow(0 0 12px rgba(175, 91, 255, 0.2));
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes rainbow-flow {
+        from {
+          background-position: 100% 50%;
+        }
+        to {
+          background-position: 0% 50%;
+        }
+      }
+
+      @keyframes breathe {
+        to {
+          transform: scale(1.08) rotate(3deg);
+        }
+      }
+
+      @media (max-width: 520px) {
+        main {
+          padding: 1.25rem;
+        }
+
+        .line {
+          letter-spacing: -0.055em;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        body::before,
+        .line,
+        .phrase {
+          animation: none;
+        }
+
+        .line,
+        .phrase {
+          opacity: 1;
+          filter: none;
+          transform: none;
+        }
+
+        .phrase {
+          max-width: 20em;
+          clip-path: none;
+          color: rgba(247, 247, 251, 0.78);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1 class="intro">
+        <span class="line">Hi, I’m 김태신</span>
+        <span class="line">I’m <span class="phrase">미국남부 사는 SUPER&nbsp;</span><span class="rainbow">GAY</span></span>
+      </h1>
+    </main>
+  </body>
+</html>
